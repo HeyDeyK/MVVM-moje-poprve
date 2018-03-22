@@ -6,7 +6,23 @@
         xmlns:local="clr-namespace:DataBinding"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+    <Grid Margin="0,0,2,2">
+        <ListView x:Name="listview" HorizontalAlignment="Left" Height="234" Margin="10,75,0,0" VerticalAlignment="Top" Width="497" ItemsSource="{Binding Persons}" SelectedItem="{Binding SelectedPerson}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="50"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name,StringFormat='Name: {0} '}" Width="100"/>
+                    <GridViewColumn Header="Má rád matěje?" DisplayMemberBinding="{Binding Rad}" Width="170"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="{Binding NumberOfClicks}"
+                Command="{Binding ClickCommand}"
+                ContentStringFormat="Number of clicks: {0}" Margin="10,10,299,247" />
+        <Button Content="Button with Command parameters"
+                Command="{Binding CommandWithParameters}"
+                CommandParameter="{Binding PersonToBind}" Margin="221,5,23,247" />
+
+
     </Grid>
 </Window>
